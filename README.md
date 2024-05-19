@@ -9,6 +9,6 @@
 para poder ver las evidencias seguir las siguientes instrucciones:
 
 1. Seleccionar el link http://localhost:63342/RetoTecnicoInternoSofka/target/site/serenity/index.html?-
-2. Ir a la barra del link y agregar al final de esta el signo ?
-3. presionar enter
+2. Ir a la barra del link seleccionar el link y presionar enter.
+
 
