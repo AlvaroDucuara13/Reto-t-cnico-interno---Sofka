@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="consultar usuario por id" skipped="0" tests="3" time="5.32" timestamp="2024-05-19 11:47:59"><testcase name="CP01 - Realizar consulta de usuario por id"/><testcase name="CP02 - Actualizar datos del usuario"/><testcase name="CP03 - Eliminar un usuario del sistema"/></testsuite>

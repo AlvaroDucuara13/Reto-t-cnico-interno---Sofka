@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"consultar usuario por id","CP01 - Realizar consulta de usuario por id","SUCCESS","2024-05-19T11:47:59.1924417-05:00[America/Bogota]","0.0","3.08"
+"consultar usuario por id","CP03 - Eliminar un usuario del sistema","SUCCESS","2024-05-19T11:48:03.0897968-05:00[America/Bogota]","0.0","1.45"

@@ -1,0 +1,87 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.6.7"
+    }
+}
+
+plugins {
+    id "net.serenity-bdd.serenity-gradle-plugin" version "3.6.7"
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+}
+
+defaultTasks 'clean', 'test', 'aggregate'
+group = "com.sofka.retoTecnico"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+ext {
+    serenityVersion = '3.6.12'
+    slf4jVersion = '2.0.6'
+    junitVersion = '5.9.2'
+    apachePoiVersion = '5.2.3'
+    lombokVersion = '1.18.26'
+    jacksonVersion = '2.14.2'
+    commonsValidatorVersion = '1.7'
+    jsonSimpleVersion = '1.1.1'
+    jsonVersion = '20230227'
+    commonsValidator = '1.7'
+    commonsIoVersion = '2.11.0'
+    rabbitVersion = '5.7.3'
+    projectReactor = '3.4.0'
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation "org.slf4j:slf4j-simple:${slf4jVersion}"
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-ensure:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-junit5:${serenityVersion}"
+    implementation "org.apache.poi:poi:${apachePoiVersion}"
+    implementation "org.apache.poi:poi-ooxml:${apachePoiVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "commons-validator:commons-validator:${commonsValidatorVersion}"
+    implementation "com.googlecode.json-simple:json-simple:${jsonSimpleVersion}"
+    implementation "org.json:json:${jsonVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    implementation group: 'org.json', name: 'json', version: '20090211'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation "com.rabbitmq:amqp-client:${rabbitVersion}"
+    implementation "io.projectreactor:reactor-core:${projectReactor}"
+    implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '6.2.2.jre8'
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+gradle.startParameter.continueOnFailure = true
+test.finalizedBy(aggregate)
+
